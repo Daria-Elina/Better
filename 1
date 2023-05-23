@@ -1,0 +1,47 @@
+using namespace std;
+  cout << "Testing factorial variants:\n";
+  {
+    const struct {
+      fact_variant fact;
+      const char *name;
+    } vs[] =
+      {
+        { rec_fact, "rec" },
+        { tcr_fact_caller, "tcr" },
+        { itr_fact_0, "itr0" },
+        { itr_fact, "itr" }
+      };
+    for (auto &v : vs)
+      report(test_fact(v.fact), v.name);
+  }
+  cout << "done.\nTesting fib variants:\n";
+  {
+    const struct {
+      fib_variant fib;
+      const char *name;
+    } vs[] =
+      {
+        { rec_fib, "rec" },
+        { tcr_fib_caller, "tcr" },
+        { itr_fib_0, "itr0" },
+        { itr_fib, "itr" }
+      };
+    for (auto &v : vs)
+      report(test_fib(v.fib), v.name);
+  }
+  cout << "done.\nTesting binary search variants:\n";
+  {
+    const struct {
+      bsl_variant bsl;
+      const char *name;
+    } vs[] =
+      {
+        { rec_bsl, "rec" },
+        { itr_bsl, "itr" }
+      };
+    for (auto &v : vs)
+      report(test_bsl(v.bsl), v.name);
+  }
+  cout << "done." << endl;
+  return EXIT_SUCCESS;
+}
